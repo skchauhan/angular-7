@@ -20,4 +20,4 @@ npm install -save hammerjs
  import 'hammerjs'; ( in module app )
 
  step6)
-&;t; link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" &gt;
+&lt; link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" &gt;
