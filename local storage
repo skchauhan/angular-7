@@ -1,0 +1,31 @@
+Step 1-
+  npm install --save angular-webstorage-service
+
+Step 2-
+
+import { StorageServiceModule} from 'angular-webstorage-service';
+
+imports: [
+    BrowserModule,
+	StorageServiceModule
+  ]
+
+
+Step 3-
+In component file
+
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+
+
+public data:any=[]
+
+constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {  }
+
+
+For Set Data
+    this.storage.set(key, val);
+
+For Get Data
+    this.storage.get(key);
+
+
