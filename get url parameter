@@ -1,0 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+
+constructor(private route: ActivatedRoute) { }
+
+console.log(this.route.snapshot.params);
