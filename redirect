@@ -1,0 +1,5 @@
+import { Router } from '@angular/router';
+
+constructor(private router: Router) {}
+
+ this.router.navigate(['/about']);
