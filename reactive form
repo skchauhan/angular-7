@@ -1,0 +1,82 @@
+Step 1 )
+
+App Module
+ import { ReactiveFormsModule } from '@angular/forms';
+
+Step 2
+In components
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+Class Code
+--------------------------------
+ messageForm: FormGroup;
+  submitted = false;
+  success = false;
+
+  selectedOption: string;
+  printedOption: string;
+
+
+
+  constructor(  private formBuilder: FormBuilder  ) {   }
+
+  ngOnInit() {
+    this.messageForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.maxLength(8)]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required]
+    });
+  }
+
+   onSubmit() {
+    this.submitted = true;
+
+    if (this.messageForm.invalid) {
+        return;
+    }
+
+    console.log(this.messageForm.value);
+
+    this.success = true;
+}
+
+Step 3
+Html file 
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="success">Your form is valid!</h5>
+
+    <label>
+      Name:
+      <input type="text" formControlName="name">
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+        <div *ngIf="messageForm.controls.name.errors.maxlength">Max length is 8</div>
+      </div>
+    </label>
+
+     <select class="form-control col-lg-8" #corporation required>
+         <option *ngFor="let corporation of corporations" [value]="corporationObj">{{corporation.corp_name}}</option>    
+     </select>
+
+    <label>
+      Email:
+      <input type="email" formControlName="email">
+      <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+        <div *ngIf="messageForm.controls.email.errors.required">Your email is required</div>
+        <div *ngIf="messageForm.controls.email.errors.email">Your email is not valid</div>
+      </div>
+    </label>
+  
+    <label>
+      Message:
+      <textarea formControlName="message"></textarea>
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required">A message is required</div>
+      </div>
+    </label>
+
+    <input type="submit" value="Send message" class="cta">
+  
+  </form>
