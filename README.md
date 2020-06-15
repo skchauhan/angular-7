@@ -21,3 +21,8 @@ npm install -save hammerjs
 
  step6)
 &lt; link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" &gt;
+
+
+if angular version error
+
+npm install --save-dev @angular/cli@latest
